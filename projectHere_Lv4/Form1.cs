@@ -61,5 +61,22 @@ namespace projectHere_Lv4
             this.Hide();
             f2.Show();
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && (e.KeyChar != 8))
+            {
+                MessageBox.Show("       กรุณาใส่เฉพาะตัวเลขนะครับ", "!!!warming!!!",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.Encoding.UTF8.GetByteCount(new char[] { e.KeyChar }) > 1)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -54,6 +54,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="info.Designer.cs">
+      <DependentUpon>info.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,8 +74,17 @@
     <Compile Include="reg.Designer.cs">
       <DependentUpon>reg.cs</DependentUpon>
     </Compile>
+    <Compile Include="T_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="T_info.Designer.cs">
+      <DependentUpon>T_info.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="info.resx">
+      <DependentUpon>info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
@@ -86,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="reg.resx">
       <DependentUpon>reg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="T_info.resx">
+      <DependentUpon>T_info.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -111,6 +129,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sticker-png-circle-silhouette-user-profile-user-interface-black-head-blackandwhite-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\t.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\em.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ข.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\เดก.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ฟฟ.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ก.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\าี.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ควยใหญ่.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

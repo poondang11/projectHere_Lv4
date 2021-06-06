@@ -54,27 +54,39 @@ namespace projectHere_Lv4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = Databaseconnection();
-            string sql = $"INSERT INTO wanted(name,sername,class,color,size) VALUES(\"{textBox2.Text}\",\"{textBox3.Text}\",\"{textBox4.Text}\",\"{textBox5.Text}\",\"{Program.size}\")";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            conn.Open();
-            int rows = cmd.ExecuteNonQuery();
-            conn.Close();
-
-            if (rows > 0)
+            if (textBox2.Text == ""||textBox3.Text == ""||textBox4.Text == ""||textBox5.Text == "")
             {
-                MessageBox.Show("add success!!", "message");
-                showequipment("SELECT * FROM wanted");
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox4.Text = "";
-                textBox5.Text = "";
-                radio_s.Checked = true;
-                radio_m.Checked = false;
-                radio_l.Checked = false;
-                radio_xl.Checked = false;
-
+                MessageBox.Show("some field are empty!!", "message");
             }
+            else
+            {
+                MySqlConnection conn = Databaseconnection();
+                string sql = $"INSERT INTO wanted(name,sername,class,color,size) VALUES(\"{textBox2.Text}\",\"{textBox3.Text}\",\"{textBox4.Text}\",\"{textBox5.Text}\",\"{Program.size}\")";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                int rows = cmd.ExecuteNonQuery();
+                conn.Close();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("add success!!", "message");
+                    showequipment("SELECT * FROM wanted");
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    textBox5.Text = "";
+                    radio_s.Checked = true;
+                    radio_m.Checked = false;
+                    radio_l.Checked = false;
+                    radio_xl.Checked = false;
+
+                }
+            }
+             
+             
+
+
+
         }
 
         private void radio_s_CheckedChanged(object sender, EventArgs e)
@@ -190,46 +202,77 @@ namespace projectHere_Lv4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string name;
-            name = textBox1.Text;
-            MySqlConnection conn = Databaseconnection();
-            DataSet ds = new DataSet();
-            conn.Open();
+            if (!textBox1.Text.Trim().Equals(""))
+            {
+                string name;
+                name = textBox1.Text;
+                MySqlConnection conn = Databaseconnection();
+                DataSet ds = new DataSet();
+                conn.Open();
 
-            MySqlCommand cmd;
-            cmd = conn.CreateCommand();
-            cmd.CommandText = ($"SELECT * FROM wanted WHERE name = \"{name}\"");
+                MySqlCommand cmd;
+                cmd = conn.CreateCommand();
+                cmd.CommandText = ($"SELECT * FROM wanted WHERE name = \"{name}\"");
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            adapter.Fill(ds);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(ds);
 
-            conn.Close();
+                conn.Close();
 
-            dataGridView1.DataSource = ds.Tables[0].DefaultView;
+                dataGridView1.DataSource = ds.Tables[0].DefaultView;
+                
+            
+            }
+            else
+            {
+                showequipment("SELECT * FROM wanted");
+            }
+             
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int selectedRows = dataGridView1.CurrentCell.RowIndex;
-            int deleted = Convert.ToInt32(dataGridView1.Rows[selectedRows].Cells["ID"].Value);
-
-            MySqlConnection conn = Databaseconnection();
-            string sql = $"DELETE FROM wanted WHERE ID =\"{deleted}\"";
-
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            conn.Open();
-            int rows = cmd.ExecuteNonQuery();
-            conn.Close();
-            if (rows > 0)
+            DialogResult result = DialogResult.No;
+            result = MessageBox.Show("you are delete?", "message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("delete success!!", "message");
-                showequipment("SELECT * FROM wanted");
+                int selectedRows = dataGridView1.CurrentCell.RowIndex;
+                int deleted = Convert.ToInt32(dataGridView1.Rows[selectedRows].Cells["ID"].Value);
+
+                MySqlConnection conn = Databaseconnection();
+                string sql = $"DELETE FROM wanted WHERE ID =\"{deleted}\"";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                int rows = cmd.ExecuteNonQuery();
+                conn.Close();
+                if (rows > 0)
+                {
+                    MessageBox.Show("delete success!!", "message");
+                    showequipment("SELECT * FROM wanted");
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    textBox5.Text = "";
+                    radio_s.Checked = true;
+                    radio_m.Checked = false;
+                    radio_l.Checked = false;
+                    radio_xl.Checked = false;
+                }
             }
+             
         }
 
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ราคาของเเต่ละไซต์ \nไซต์ s ราคา 120 บาท \n ไซต์ m ราคา 150 บาท \n ไซต์ L ราคา 170 บาท \n ไซต์ XL ราคา 180 บาท", "information");
+            T_info f2 = new T_info();
+            f2.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            info f2 = new info();
+            f2.Show();
         }
     }
 }

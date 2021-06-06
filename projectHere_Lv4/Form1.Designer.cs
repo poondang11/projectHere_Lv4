@@ -52,20 +52,21 @@ namespace projectHere_Lv4
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("iannnnnPDF 2008", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(12, 116);
+            this.label2.Font = new System.Drawing.Font("iannnnnPDF 2008", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label2.Location = new System.Drawing.Point(18, 124);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 30);
+            this.label2.Size = new System.Drawing.Size(277, 23);
             this.label2.TabIndex = 1;
-            this.label2.Text = "รหัสนักศึกษา";
+            this.label2.Text = "รหัสประจำตัว (รหัสนักเรียนหรือรหัสคุณครู)";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 149);
+            this.textBox1.Location = new System.Drawing.Point(17, 150);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(320, 22);
             this.textBox1.TabIndex = 2;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label3
             // 
@@ -84,6 +85,7 @@ namespace projectHere_Lv4
             this.textBox2.PasswordChar = '•';
             this.textBox2.Size = new System.Drawing.Size(320, 20);
             this.textBox2.TabIndex = 4;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // button1
             // 
